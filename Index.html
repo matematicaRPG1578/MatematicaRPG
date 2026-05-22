@@ -299,6 +299,62 @@
       }
     }
 
+    /* ========== BOTÃO ADM NO CANTO ========== */
+    .btn-adm-flutuante {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+      border: 3px solid #ff6666;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 5px 20px rgba(255, 68, 68, 0.5);
+      transition: all 0.3s ease;
+      z-index: 100;
+      animation: pulse-adm 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-adm {
+      0%, 100% {
+        box-shadow: 0 5px 20px rgba(255, 68, 68, 0.5);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 8px 30px rgba(255, 68, 68, 0.8);
+        transform: scale(1.05);
+      }
+    }
+
+    .btn-adm-flutuante:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 40px rgba(255, 68, 68, 0.8);
+    }
+
+    .btn-adm-flutuante-tooltip {
+      position: absolute;
+      right: 90px;
+      background: rgba(255, 68, 68, 0.95);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .btn-adm-flutuante:hover .btn-adm-flutuante-tooltip {
+      opacity: 1;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 36px;
@@ -320,6 +376,19 @@
       .container {
         padding: 30px 15px;
       }
+
+      .btn-adm-flutuante {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .btn-adm-flutuante-tooltip {
+        right: 80px;
+        font-size: 11px;
+      }
     }
   </style>
 </head>
@@ -331,6 +400,12 @@
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
   </div>
+
+  <!-- BOTÃO ADM FLUTUANTE -->
+  <button class="btn-adm-flutuante" onclick="abrirPainelADM()">
+    ⚙️
+    <div class="btn-adm-flutuante-tooltip">Painel do ADM</div>
+  </button>
 
   <div class="container">
     <div class="header">
@@ -381,6 +456,10 @@
       } else {
         window.location.href = "aventura.html";
       }
+    }
+
+    function abrirPainelADM() {
+      window.location.href = 'admin.html';
     }
   </script>
 
